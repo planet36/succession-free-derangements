@@ -206,6 +206,8 @@ def search_matrices(n: int) -> Iterator[Matrix]:
     yield from add_rows(1)
 
 
+# Trial division takes about sqrt(n) steps, and the matrix it guards has n*n entries, so it is
+# never the slow part.  A library primality test would only add a runtime dependency.
 def _is_prime(p: int) -> bool:
     return p >= 2 and all(p % d for d in range(2, math.isqrt(p) + 1))
 
