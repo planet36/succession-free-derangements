@@ -273,14 +273,16 @@ def main(argv: list[str] | None = None) -> int:
         epilog='examples:\n'
                '  %(prog)s permutations 6\n'
                '  %(prog)s matrices 12 --limit 1\n'
-               '  %(prog)s matrices 16 --modular',
+               '  %(prog)s matrices 16 --modular\n'
+               '\n'
+               "Run '%(prog)s COMMAND --help' for a command's options.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     subparsers = parser.add_subparsers(dest='command', required=True)
 
     perms = subparsers.add_parser(
         'permutations', help='print each succession-free derangement on its own line')
-    perms.add_argument('n', type=int, metavar='N')
+    perms.add_argument('n', type=int, metavar='N', help='a nonnegative integer')
     perms.add_argument('-l', '--limit', type=_nonnegative, help='stop after this many')
 
     matrices = subparsers.add_parser(
