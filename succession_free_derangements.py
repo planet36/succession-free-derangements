@@ -270,6 +270,11 @@ def main(argv: list[str] | None = None) -> int:
     """Run the command-line interface and return the exit status."""
     parser = argparse.ArgumentParser(
         description='Generate succession-free derangements of 0..N-1.',
+        epilog='examples:\n'
+               '  %(prog)s permutations 6\n'
+               '  %(prog)s matrices 12 --limit 1\n'
+               '  %(prog)s matrices 16 --modular',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     subparsers = parser.add_subparsers(dest='command', required=True)
 
