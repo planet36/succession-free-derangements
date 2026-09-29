@@ -269,31 +269,33 @@ def _nonnegative(s: str) -> int:
 def main(argv: list[str] | None = None) -> int:
     """Run the command-line interface and return the exit status."""
     parser = argparse.ArgumentParser(
-        description='Generate succession-free derangements of 0..N-1.',
+        description='Generate succession-free derangements of 0..N-1.\n'
+                    '\n'
+                    'commands:\n'
+                    '  permutations  print each succession-free derangement on its own line\n'
+                    '  matrices      print succession-free derangement matrices, separated by\n'
+                    '                blank lines',
         epilog='examples:\n'
                '  %(prog)s permutations 6\n'
                '  %(prog)s matrices 12 --limit 1\n'
-               '  %(prog)s matrices 16 --modular\n'
-               '\n'
-               "Run '%(prog)s COMMAND --help' for a command's options.",
+               '  %(prog)s matrices 16 --modular',
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
-    subparsers = parser.add_subparsers(dest='command', required=True)
-
-    perms = subparsers.add_parser(
-        'permutations', help='print each succession-free derangement on its own line')
-    perms.add_argument('n', type=int, metavar='N', help='a nonnegative integer')
-    perms.add_argument('-l', '--limit', type=_nonnegative, help='stop after this many')
-
-    matrices = subparsers.add_parser(
-        'matrices', help='print succession-free derangement matrices, separated by blank lines')
-    matrices.add_argument('n', type=int, metavar='N', help='an even integer')
-    matrices.add_argument('-l', '--limit', type=_nonnegative, help='stop after this many')
-    matrices.add_argument(
+    parser.add_argument(
+        'command', choices=['permutations', 'matrices'], metavar='COMMAND',
+        help='permutations or matrices')
+    parser.add_argument(
+        'n', type=int, metavar='N',
+        help='a nonnegative integer, or for matrices, an even integer of at least 2')
+    parser.add_argument('-l', '--limit', type=_nonnegative, help='stop after this many')
+    parser.add_argument(
         '-m', '--modular', action='store_true',
-        help='print the single matrix built modulo N+1, which requires N+1 to be prime')
+        help='for matrices, print the single matrix built modulo N+1, which requires N+1 to be '
+             'prime')
 
     args = parser.parse_args(argv)
+    if args.modular and args.command != 'matrices':
+        parser.error('--modular applies only to matrices')
 
     try:
         if args.command == 'permutations':

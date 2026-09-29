@@ -157,6 +157,12 @@ def test_cli_reports_bad_n(capsys):
     assert 'even' in capsys.readouterr().err
 
 
+def test_cli_rejects_modular_permutations(capsys):
+    with pytest.raises(SystemExit):
+        main(['permutations', '4', '--modular'])
+    assert 'only to matrices' in capsys.readouterr().err
+
+
 @pytest.mark.parametrize('limit', ['-1', 'x'])
 def test_cli_reports_bad_limit(capsys, limit):
     with pytest.raises(SystemExit):
