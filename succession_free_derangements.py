@@ -273,8 +273,7 @@ def main(argv: list[str] | None = None) -> int:
                     '\n'
                     'commands:\n'
                     '  permutations  print each succession-free derangement on its own line\n'
-                    '  matrices      print succession-free derangement matrices, separated by\n'
-                    '                blank lines',
+                    '  matrices      print succession-free derangement matrices, separated by blank lines',
         epilog='examples:\n'
                '  %(prog)s permutations 6\n'
                '  %(prog)s matrices 4\n'
