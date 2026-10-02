@@ -277,6 +277,10 @@ def main(argv: list[str] | None = None) -> int:
                     '                blank lines',
         epilog='examples:\n'
                '  %(prog)s permutations 6\n'
+               '  %(prog)s matrices 4\n'
+               '  %(prog)s matrices 6\n'
+               '  %(prog)s matrices 8\n'
+               '  %(prog)s matrices 10\n'
                '  %(prog)s matrices 12 --limit 1\n'
                '  %(prog)s matrices 16 --modular',
         formatter_class=argparse.RawDescriptionHelpFormatter,
