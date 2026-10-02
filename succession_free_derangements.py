@@ -286,19 +286,19 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument(
         'command', choices=['permutations', 'matrices'], metavar='COMMAND',
-        help='permutations or matrices')
+        help='"permutations" or "matrices"')
     parser.add_argument(
         'n', type=int, metavar='N',
-        help='a nonnegative integer, or for matrices, an even integer of at least 2')
+        help='a nonnegative integer, or for "matrices", an even integer of at least 2')
     parser.add_argument('-l', '--limit', type=_nonnegative, help='stop after this many')
     parser.add_argument(
         '-m', '--modular', action='store_true',
-        help='for matrices, print the single matrix built modulo N+1, which requires N+1 to be '
+        help='for "matrices", print the single matrix built modulo N+1, which requires N+1 to be '
              'prime')
 
     args = parser.parse_args(argv)
     if args.modular and args.command != 'matrices':
-        parser.error('--modular applies only to matrices')
+        parser.error('--modular applies only to "matrices"')
 
     try:
         if args.command == 'permutations':
