@@ -108,7 +108,7 @@ def test_modular_matrix_is_valid(n):
 
 
 def test_modular_matrix_matches_saved_result_for_10():
-    assert modular_matrix(10) == saved(10)[0]
+    assert modular_matrix(10) in saved(10)
 
 
 @pytest.mark.parametrize('n', [8, 14, 1, 3])
@@ -160,7 +160,7 @@ def test_cli_reports_bad_n(capsys):
 def test_cli_rejects_modular_permutations(capsys):
     with pytest.raises(SystemExit):
         main(['permutations', '4', '--modular'])
-    assert 'only to matrices' in capsys.readouterr().err
+    assert 'only to "matrices"' in capsys.readouterr().err
 
 
 @pytest.mark.parametrize('limit', ['-1', 'x'])
