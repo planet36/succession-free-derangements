@@ -273,7 +273,8 @@ def main(argv: list[str] | None = None) -> int:
                     '\n'
                     'commands:\n'
                     '  permutations  print each succession-free derangement on its own line\n'
-                    '  matrices      print succession-free derangement matrices, separated by blank lines',
+                    '  matrices      print succession-free derangement matrices, separated by '
+                    'blank lines',
         epilog='examples:\n'
                '  %(prog)s permutations 6\n'
                '  %(prog)s matrices 4\n'
@@ -293,8 +294,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument('-l', '--limit', type=_nonnegative, help='stop after this many')
     parser.add_argument(
         '-m', '--modular', action='store_true',
-        help='for "matrices", print the single matrix built modulo N+1, which requires N+1 to be '
-             'prime')
+        help='for "matrices", print the single matrix built modulo N+1, which requires N+1 to '
+        'be prime')
 
     args = parser.parse_args(argv)
     if args.modular and args.command != 'matrices':
