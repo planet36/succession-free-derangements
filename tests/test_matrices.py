@@ -28,15 +28,9 @@ def searched(n):
     return list(search_matrices(n))
 
 
-@pytest.mark.parametrize('n', [4, 6, 8])
+@pytest.mark.parametrize('n', [2, 4, 6, 8, 10])
 def test_search_reproduces_saved_results(n):
     assert searched(n) == saved(n)
-
-
-def test_search_finds_saved_result_for_10():
-    found = searched(10)
-    assert len(found) == 16
-    assert saved(10)[0] in found
 
 
 @pytest.mark.parametrize('n', [2, 4, 6, 8, 10])
@@ -117,7 +111,7 @@ def test_modular_matrix_rejects_bad_n(n):
         modular_matrix(n)
 
 
-@pytest.mark.parametrize('n', [4, 6, 8, 10])
+@pytest.mark.parametrize('n', [2, 4, 6, 8, 10, 12])
 def test_format_matches_saved_files(n):
     text = (RESULTS / f'succession-free-derangements-{n}.txt').read_text()
     assert '\n\n'.join(format_matrix(m) for m in parse_matrices(text)) == text.strip()
