@@ -31,12 +31,12 @@ The module has a section for each kind, followed by the command-line interface. 
 
 The second section handles the matrices that most of the scratch work was about.  The module docstring holds the definition.  In short, for even `n`, the matrix is symmetric, row 0 is the identity, row `n-1-k` is row `k` reversed, and no ordered pair of adjacent values appears in two rows.  The search and the validator both rely on consequences of that definition, which the docstring spells out.
 
-- `search_matrices(n)` backtracks one row at a time over the top half.  Symmetry fixes every entry of the next row except the middle ones.  Because each row's reversal is also a row, the search tracks unordered adjacent pairs, and each pair may appear once.  Every matrix for n = 10 takes under a second, and the first one for n = 12 takes several seconds.
-- `modular_matrix(n)` builds one matrix directly when `n+1` is prime, with entry `(k, i)` equal to `((k+1)(i+1) mod (n+1)) - 1`.  It is the saved n = 10 result.
+- `search_matrices(n)` backtracks one row at a time over the top half.  Symmetry fixes every entry of the next row except the middle ones.  Because each row's reversal is also a row, the search tracks unordered adjacent pairs, and each pair may appear once.  Every matrix for n = 10 takes under a second, and the first one for n = 12 takes several seconds, but all of them take over half an hour.
+- `modular_matrix(n)` builds one matrix directly when `n+1` is prime, with entry `(k, i)` equal to `((k+1)(i+1) mod (n+1)) - 1`.  It is one of the saved n = 10 results.
 
 ## Results
 
-`results/succession-free-derangements-{4,6,8,10}.txt` are the known solutions in numpy's integer-array print format, one matrix per block, separated by blank lines.  `format_matrix` and `parse_matrices` read and write that format, and `matrices N` prints it.  The tests check that the search reproduces the files for 4, 6, and 8 exactly and that the file for 10 is one of its 16 solutions, so a change to the format or to the search order will show up there.
+`results/succession-free-derangements-{2,4,6,8,10,12}.txt` are the known solutions in numpy's integer-array print format, one matrix per block, separated by blank lines.  `format_matrix` and `parse_matrices` read and write that format, and `matrices N` prints it.  The tests check that the search reproduces the files for 4, 6, and 8 exactly and that the search for 10 finds 16 solutions, including the first one in the file, so a change to the format or to the search order will show up there.
 
 ## scratch/
 

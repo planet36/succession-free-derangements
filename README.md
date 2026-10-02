@@ -26,7 +26,7 @@ python3 succession_free_derangements.py matrices 12 --limit 1
 python3 succession_free_derangements.py matrices 16 --modular
 ```
 
-`permutations N` prints every succession-free derangement of `0..N-1`, one per line.  `matrices N` searches for every matrix of order `N`, which must be even, and prints them separated by blank lines.  The search lists every matrix for 10 in under a second, but 12 has too many to list, so `--limit` stops after that many.
+`permutations N` prints every succession-free derangement of `0..N-1`, one per line.  `matrices N` searches for every matrix of order `N`, which must be even, and prints them separated by blank lines.  The search lists every matrix for 10 in under a second, but every matrix for 12 takes over half an hour, so `--limit` stops after that many.
 
 `--modular` skips the search and builds a single matrix directly, with entry `(k, i)` equal to `((k+1)(i+1) mod (N+1)) - 1`.  That works whenever `N+1` is prime, so it reaches sizes the search cannot.
 
@@ -54,7 +54,7 @@ pytest tests/test_matrices.py -k modular  # tests whose names match
 
 - `succession_free_derangements.py` holds all the code: single permutations, the matrix search and construction, and the command-line interface.
 - `tests/` checks the generators against brute force and against the saved results.
-- `results/` holds the known matrices for 4, 6, 8, and 10 in the format that `matrices` prints.  The search reproduces the files for 4, 6, and 8 exactly.
+- `results/` holds the known matrices for every even order from 2 to 12 in the format that `matrices` prints.  The search reproduces the files for 2 through 10 exactly.
 - `scratch/` holds a script that prints the succession-free derangements with the largest circular distance.
 - `COMMENT-STYLE.md` sets the rules for comments, docstrings, commit messages, and documentation.
 
