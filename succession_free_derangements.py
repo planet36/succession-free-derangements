@@ -294,8 +294,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument('-l', '--limit', type=_nonnegative, help='stop after this many')
     parser.add_argument(
         '-m', '--modular', action='store_true',
-        help='for "matrices", print the single matrix built modulo N+1, which requires N+1 to '
-             'be prime')
+        help='for "matrices", skip the search and print one matrix whose entry (k, i) is '
+             '((k+1)(i+1) mod (N+1)) - 1, which requires N+1 to be prime')
 
     args = parser.parse_args(argv)
     if args.modular and args.command != 'matrices':
