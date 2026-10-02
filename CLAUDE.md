@@ -36,7 +36,7 @@ The second section handles the matrices that most of the scratch work was about.
 
 ## Results
 
-`results/succession-free-derangements-{2,4,6,8,10,12}.txt` are the known solutions in numpy's integer-array print format, one matrix per block, separated by blank lines.  `format_matrix` and `parse_matrices` read and write that format, and `matrices N` prints it.  The tests check that the search reproduces every file but the one for 12 exactly, so a change to the format or to the search order will show up there.  Searching for 12 is too slow for the tests, so they only check that its file round-trips through those two functions.
+`results/succession-free-derangements-{2,4,6,8,10,12}.txt` are the known solutions in numpy's integer-array print format, one matrix per block, separated by blank lines.  `format_matrix` and `parse_matrices` read and write that format, and `matrices N` prints it.  The tests check that the search reproduces every file but the one for 12 exactly, so a change to the format or to the search order will show up there.  Searching for 12 is too slow for the tests, so they only check that its file round-trips through those two functions and holds 482 valid matrices.
 
 ## scratch/
 
