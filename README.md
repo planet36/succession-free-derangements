@@ -26,7 +26,7 @@ python3 succession_free_derangements.py matrices 12 --limit 1
 python3 succession_free_derangements.py matrices 16 --modular
 ```
 
-`permutations N` prints every succession-free derangement of `0..N-1`, one per line.  `matrices N` searches for every matrix of order `N`, which must be even, and prints them separated by blank lines.  The search lists every matrix for 10 in under a second, but every matrix for 12 takes over half an hour, so `--limit` stops after that many.
+`permutations N` prints every succession-free derangement of `0..N-1`, one per line.  `matrices N` searches for every matrix of order `N`, which must be even, and prints them separated by blank lines.  The search lists every matrix for 10 in under a second, but all 482 matrices for 12 take over half an hour, so `--limit` stops after that many.
 
 `--modular` skips the search and builds a single matrix directly, with entry `(k, i)` equal to `((k+1)(i+1) mod (N+1)) - 1`.  That works whenever `N+1` is prime, so it reaches sizes the search cannot.
 
