@@ -38,6 +38,13 @@ def test_search_yields_only_valid_matrices(n):
     assert all(is_succession_free_matrix(m) for m in searched(n))
 
 
+# Searching for 12 is too slow for the tests, so check the saved file directly.
+def test_saved_results_for_12_are_valid():
+    matrices = saved(12)
+    assert len(matrices) == 482
+    assert all(is_succession_free_matrix(m) for m in matrices)
+
+
 @pytest.mark.parametrize('n', [0, 3, 5])
 def test_search_rejects_bad_n(n):
     with pytest.raises(ValueError):
