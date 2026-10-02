@@ -295,7 +295,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         '-m', '--modular', action='store_true',
         help='for "matrices", print the single matrix built modulo N+1, which requires N+1 to '
-        'be prime')
+             'be prime')
 
     args = parser.parse_args(argv)
     if args.modular and args.command != 'matrices':
