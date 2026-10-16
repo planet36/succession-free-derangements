@@ -174,6 +174,12 @@ def test_cli_rejects_modular_permutations(capsys):
     assert 'only to "matrices"' in capsys.readouterr().err
 
 
+def test_cli_rejects_modular_limit(capsys):
+    with pytest.raises(SystemExit):
+        main(['matrices', '4', '--modular', '--limit', '0'])
+    assert 'does not apply to --modular' in capsys.readouterr().err
+
+
 @pytest.mark.parametrize('limit', ['-1', 'x'])
 def test_cli_reports_bad_limit(capsys, limit):
     with pytest.raises(SystemExit):
