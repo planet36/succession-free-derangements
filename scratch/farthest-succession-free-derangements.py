@@ -16,6 +16,8 @@ from succession_free_derangements import circular_distance, succession_free_dera
 
 n = int(sys.argv[1]) if len(sys.argv) > 1 else 10
 perms = list(succession_free_derangements(n))
+if not perms:
+    sys.exit(f'no succession-free derangement of 0..{n - 1} exists')
 best = max(map(circular_distance, perms))
 farthest = [p for p in perms if circular_distance(p) == best]
 
