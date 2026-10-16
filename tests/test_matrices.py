@@ -3,6 +3,8 @@
 
 import functools
 import pathlib
+import subprocess
+import sys
 
 import pytest
 
@@ -15,7 +17,8 @@ from succession_free_derangements import (
     search_matrices,
 )
 
-RESULTS = pathlib.Path(__file__).parent.parent / 'results'
+ROOT = pathlib.Path(__file__).parent.parent
+RESULTS = ROOT / 'results'
 
 
 def saved(n):
@@ -176,3 +179,13 @@ def test_cli_reports_bad_limit(capsys, limit):
     with pytest.raises(SystemExit):
         main(['permutations', '4', '--limit', limit])
     assert 'nonnegative integer' in capsys.readouterr().err
+
+
+def test_cli_exits_quietly_when_the_pipe_closes():
+    script = ROOT / 'succession_free_derangements.py'
+    with subprocess.Popen([sys.executable, script, 'permutations', '12'],
+                          stdout=subprocess.PIPE, stderr=subprocess.PIPE) as proc:
+        proc.stdout.readline()
+        proc.stdout.close()
+        assert proc.stderr.read() == b''
+    assert proc.returncode == 1
