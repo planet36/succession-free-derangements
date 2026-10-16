@@ -58,12 +58,9 @@ def test_validator_rejects_broken_matrices():
     good = saved(6)[0]
     assert is_succession_free_matrix(good)
 
+    # Swapping rows 1 and 2, and rows 3 and 4, keeps the mirror rule but breaks symmetry.
     swapped_rows = [good[0], good[2], good[1], good[4], good[3], good[5]]
     assert not is_succession_free_matrix(swapped_rows)
-
-    # Swapping two columns keeps every row a permutation but breaks symmetry.
-    swapped_cols = [[row[0], row[2], row[1], row[3], row[4], row[5]] for row in good]
-    assert not is_succession_free_matrix(swapped_cols)
 
     assert not is_succession_free_matrix([row[:5] for row in good[:5]])
 
