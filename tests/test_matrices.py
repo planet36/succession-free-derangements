@@ -48,7 +48,7 @@ def test_saved_results_for_12_are_valid():
 @pytest.mark.parametrize('n', [0, 3, 5])
 def test_search_rejects_bad_n(n):
     with pytest.raises(ValueError):
-        next(search_matrices(n))
+        search_matrices(n)
 
 
 def test_validator_rejects_broken_matrices():
@@ -156,6 +156,13 @@ def test_cli_reports_bad_n(capsys):
     with pytest.raises(SystemExit):
         main(['matrices', '7'])
     assert 'even' in capsys.readouterr().err
+
+
+@pytest.mark.parametrize('argv', [['matrices', '7'], ['permutations', '-1']])
+def test_cli_reports_bad_n_under_limit_0(capsys, argv):
+    with pytest.raises(SystemExit):
+        main([*argv, '--limit', '0'])
+    assert 'must be' in capsys.readouterr().err
 
 
 def test_cli_rejects_modular_permutations(capsys):

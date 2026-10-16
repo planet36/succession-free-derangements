@@ -42,7 +42,7 @@ def test_generator_matches_brute_force(n):
 
 def test_negative_n_is_rejected():
     with pytest.raises(ValueError):
-        next(succession_free_derangements(-1))
+        succession_free_derangements(-1)
 
 
 def test_large_n_is_not_bounded_by_recursion_limit():
