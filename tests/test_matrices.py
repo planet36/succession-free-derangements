@@ -190,5 +190,10 @@ def test_cli_exits_quietly_when_the_pipe_closes():
                           stdout=subprocess.PIPE, stderr=subprocess.PIPE) as proc:
         proc.stdout.readline()
         proc.stdout.close()
+        # Leaving the with block waits for the child with no limit, so kill it first.
+        try:
+            assert proc.wait(timeout=10) == 1
+        except subprocess.TimeoutExpired:
+            proc.kill()
+            raise
         assert proc.stderr.read() == b''
-    assert proc.returncode == 1
