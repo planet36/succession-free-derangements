@@ -40,7 +40,7 @@ The second section handles the matrices that most of the scratch work was about.
 
 ## scratch/
 
-`farthest-succession-free-derangements.py` imports the module and prints the succession-free derangements with the largest `circular_distance`.  It checks every one, so it is practical only up to about n = 11.  Neither the module nor the tests refer to `scratch/`.
+`farthest-succession-free-derangements.py` imports the module and prints the succession-free derangements with the largest `circular_distance`.  It checks every one, so n = 12 takes about two and a half minutes, and each step up in n takes about ten times as long.  Neither the module nor the tests refer to `scratch/`.
 
 ## Conventions
 
