@@ -15,7 +15,7 @@ from succession_free_derangements import (
 )
 
 
-def test_examples_from_notes():
+def test_predicates_on_examples():
     assert is_derangement((1, 2, 3, 0))
     assert has_succession((1, 2, 3, 0))
     assert not is_succession_free_derangement((1, 2, 3, 0))
