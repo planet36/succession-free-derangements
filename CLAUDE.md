@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A Python project that generates succession-free derangements, organized out of a disorganized, unfinished collection of scripts, notes, ideas, and output.  Everything worth keeping from that material has moved into the module, and the rest was deleted.  Git history still has it.
+A Python project that generates succession-free derangements, organized out of a disorganized, unfinished collection of scripts, notes, ideas, and output.  Everything worth keeping from that material has moved into the module, and the rest was deleted.
 
 ## Prose style
 
