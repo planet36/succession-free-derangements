@@ -12,6 +12,11 @@ BIN = succession-free-derangements
 all:
 
 clean:
+	@$(RM) --verbose --recursive -- \
+		__pycache__ \
+		tests/__pycache__ \
+		.mypy_cache \
+		.ruff_cache
 
 # This uses install rather than cp because install replaces a symlink at the destination.  cp
 # would write through it, so where these files used to be linked in from elsewhere, it would
