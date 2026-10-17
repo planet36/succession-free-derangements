@@ -21,7 +21,7 @@ install:
 	install -D -m 755 $(BIN) "$(DESTDIR)$(BINDIR)/$(BIN)"
 
 uninstall:
-	@$(RM) "$(DESTDIR)$(PYTHONDIR)/$(MODULE)" "$(DESTDIR)$(BINDIR)/$(BIN)"
+	@$(RM) --verbose -- "$(DESTDIR)$(PYTHONDIR)/$(MODULE)" "$(DESTDIR)$(BINDIR)/$(BIN)"
 
 lint:
 	-ruff check $(MODULE) $(BIN)
