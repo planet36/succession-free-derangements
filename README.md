@@ -30,6 +30,8 @@ python3 succession_free_derangements.py matrices 16 --modular
 
 `--modular` skips the search and builds a single matrix directly, with entry `(k, i)` equal to `((k+1)(i+1) mod (N+1)) - 1`.  That works whenever `N+1` is prime, so it reaches sizes the search cannot.
 
+`make install` copies the module to `~/.local/lib/python/` and the wrapper to `~/.local/bin/`, and `make uninstall` removes them.  Set `PREFIX` to install somewhere other than `~/.local`.  The installed wrapper finds the module only if that `lib/python/` directory is on `PYTHONPATH`.
+
 To use it from Python, import it from the repo root, or copy the file anywhere on the import path:
 
 ```python
@@ -54,6 +56,7 @@ pytest tests/test_matrices.py -k modular  # tests whose names match
 
 - `succession_free_derangements.py` holds all the code: single permutations, the matrix search and construction, and the command-line interface.
 - `succession-free-derangements` is a short script that imports the module and runs its command-line interface.
+- `Makefile` installs the module and the wrapper, and lints them.
 - `tests/` checks the generators against brute force and against the saved results.
 - `results/` holds the known matrices for every even order from 2 to 12 in the format that `matrices` prints.  The search reproduces the files for 2 through 10 exactly.
 - `scratch/` holds a script that prints the succession-free derangements with the largest circular distance.
