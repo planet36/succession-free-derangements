@@ -56,7 +56,7 @@ pytest tests/test_matrices.py -k modular  # tests whose names match
 
 - `succession_free_derangements.py` holds all the code: single permutations, the matrix search and construction, and the command-line interface.
 - `succession-free-derangements` is a short script that imports the module and runs its command-line interface.
-- `Makefile` installs the module and the wrapper, and lints them.
+- `Makefile` installs the module and the wrapper, lints them, and removes the Python and lint caches.
 - `tests/` checks the generators against brute force and against the saved results.
 - `results/` holds the known matrices for every even order from 2 to 12 in the format that `matrices` prints.  The search reproduces the files for 2 through 10 exactly.
 - `scratch/` holds a script that prints the succession-free derangements with the largest circular distance.

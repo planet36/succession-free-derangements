@@ -14,7 +14,7 @@ A Python project that generates succession-free derangements, organized out of a
 
 All the code is in one module, `succession_free_derangements.py`.  It has no runtime dependencies and needs Python 3.10 or later.  It is meant to be run or imported as a plain file, not installed as a package, so don't add packaging metadata.  `make install` only copies the module to `$(PREFIX)/lib/python/` and the wrapper to `$(PREFIX)/bin/`, with `PREFIX` defaulting to `~/.local`.  The tests need pytest, and `pyproject.toml` holds only its settings.
 
-The Makefile also has `all` and `clean` targets that do nothing.  A parent Makefile that builds many directories runs those targets in each one, so keep them.
+The Makefile also has an `all` target that does nothing and a `clean` target that removes the Python and lint caches.  A parent Makefile that builds many directories runs those targets in each one, so keep them.
 
 ```sh
 pytest                                         # all tests
