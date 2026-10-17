@@ -332,6 +332,8 @@ def main(argv: list[str] | None = None) -> int:
                 if i:
                     print()
                 print(format_matrix(m), flush=True)
+        # Flush here so that a closed pipe raises inside the try, not at exit.
+        sys.stdout.flush()
     except ValueError as e:
         parser.error(str(e))
     except BrokenPipeError:
