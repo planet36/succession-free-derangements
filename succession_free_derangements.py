@@ -341,6 +341,10 @@ def main(argv: list[str] | None = None) -> int:
         # point somewhere that accepts the write.
         os.dup2(os.open(os.devnull, os.O_WRONLY), sys.stdout.fileno())
         return 1
+    except KeyboardInterrupt:
+        # A shell reports 128 plus the signal number for a command that a signal stopped, and
+        # SIGINT is 2.
+        return 130
 
     return 0
 
