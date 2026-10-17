@@ -13,7 +13,7 @@ This project generates succession-free derangements, and it also generates squar
  [5 4 3 2 1 0]]
 ```
 
-The first row is the identity, the last is its reverse, and each row mirrors the row the same distance from the other end.  The matrix is symmetric, so any two rows are derangements of each other.  No two rows share an adjacent pair of values in the same order.  The docstring at the top of `succession_free_derangements.py` gives the full definition and what follows from it.
+The first row is the identity, the last is its reverse, and each row mirrors the row the same distance from the other end.  The matrix is symmetric, so any two rows are derangements of each other.  No two rows share an adjacent pair of values in the same order.  Each matrix is therefore a row-complete Latin square: every value appears once in each row and each column, and every ordered pair of distinct values sits side by side in exactly one row.  The docstring at the top of `succession_free_derangements.py` gives the full definition and what follows from it.
 
 ## Running it
 
