@@ -23,7 +23,7 @@ python3 succession_free_derangements.py matrices 12 --limit 1
 python3 succession_free_derangements.py matrices 16 --modular
 ```
 
-`python3 -m succession_free_derangements` works the same as running the file.
+`python3 -m succession_free_derangements` works the same as running the file, and so does `./succession-free-derangements`, a wrapper that imports the module and calls `main`.  The wrapper sits at the repo root because Python puts a script's own directory first on the import path, so in a checkout it imports the checkout's module rather than an installed copy.
 
 ## Two kinds of output
 
