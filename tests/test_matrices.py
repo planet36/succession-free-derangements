@@ -9,6 +9,8 @@ import sys
 import pytest
 
 from succession_free_derangements import (
+    __license__,
+    __version__,
     format_matrix,
     is_succession_free_matrix,
     main,
@@ -175,6 +177,14 @@ def test_cli_rejects_modular_limit(capsys):
     with pytest.raises(SystemExit):
         main(['matrices', '4', '--modular', '--limit', '0'])
     assert 'does not apply to --modular' in capsys.readouterr().err
+
+
+def test_cli_version_prints_version_before_license(capsys):
+    with pytest.raises(SystemExit) as exc:
+        main(['--version'])
+    assert exc.value.code == 0
+    out = capsys.readouterr().out
+    assert out.index(__version__) < out.index(__license__)
 
 
 @pytest.mark.parametrize('limit', ['-1', 'x'])

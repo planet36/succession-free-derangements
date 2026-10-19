@@ -313,6 +313,9 @@ def main(argv: list[str] | None = None) -> int:
         '-m', '--modular', action='store_true',
         help='for "matrices", skip the search and print one matrix whose entry (k, i) is '
              '((k+1)(i+1) mod (N+1)) - 1, which requires N+1 to be prime')
+    parser.add_argument(
+        '-V', '--version', action='version',
+        version=f'%(prog)s {__version__}\nLicense: {__license__}')
 
     args = parser.parse_args(argv)
     if args.modular and args.command != 'matrices':
