@@ -167,8 +167,7 @@ elsewhere.
 This section assumes Doxygen, and so do the `///` and `///<` in rules 5, 5a,
 and 7b.  A repo on another doc-comment system keeps every rule and reads `///`
 and `///<` as whatever that system writes them.  Where that system has its own
-hard convention, it wins, and rules 5a and 7b record the two cases that come
-up.
+hard convention, it wins, and rules 5a and 7b record the two cases that arise.
 
 The Doxygen behavior described below was checked against version 1.18.0.
 
