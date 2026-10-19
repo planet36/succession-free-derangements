@@ -50,4 +50,4 @@ The second section handles the matrices.  The module docstring holds the definit
 
 ## Conventions
 
-Source files, the Makefile included, start with SPDX headers (`MPL-2.0`, Steven Ward), after the shebang where there is one.  The module and the wrapper both carry `__author__`, `__license__`, and a date-string `__version__`.
+Source files, the Makefile included, start with SPDX headers (`MPL-2.0`, Steven Ward), after the shebang where there is one.  The module and the wrapper both carry `__author__`, `__license__`, and a date-string `__version__`, declared in that alphabetical order.  Anything that prints them puts `__version__` before `__license__`.
