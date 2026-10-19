@@ -33,7 +33,7 @@ Run this file, or ``python3 -m succession_free_derangements``, for the command-l
 
 __author__ = 'Steven Ward'
 __license__ = 'MPL-2.0'
-__version__ = '2026-10-17'
+__version__ = '2026-10-19'
 
 import argparse
 import itertools
