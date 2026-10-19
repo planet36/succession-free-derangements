@@ -17,7 +17,7 @@ The first row is the identity, the last is its reverse, and each row mirrors the
 
 ## Running it
 
-It needs Python 3.10 or later and nothing else.  Run the file directly, or run `./succession-free-derangements`, which takes the same arguments:
+It needs Python 3.10 or later and nothing else.  Run the file directly or with `python3 -m succession_free_derangements`, or run `./succession-free-derangements`, a wrapper that takes the same arguments:
 
 ```sh
 python3 succession_free_derangements.py permutations 4
@@ -26,9 +26,11 @@ python3 succession_free_derangements.py matrices 12 --limit 1
 python3 succession_free_derangements.py matrices 16 --modular
 ```
 
-`permutations N` prints every succession-free derangement of `0..N-1`, one per line.  `matrices N` searches for every matrix of order `N`, which must be even, and prints them separated by blank lines.  The search lists every matrix for 10 in under a second, but all 482 matrices for 12 take over half an hour, so `--limit` stops after that many.
+`permutations N` prints every succession-free derangement of `0..N-1`, one per line.  `matrices N` searches for every matrix of order `N`, which must be even and at least 2, and prints them separated by blank lines.  The search lists every matrix for 10 in under a second, but all 482 matrices for 12 take over half an hour.  `--limit LIMIT` stops either command after `LIMIT` results, so `matrices 12 --limit 1` finishes in a few seconds.
 
-`--modular` skips the search and builds a single matrix directly, with entry `(k, i)` equal to `((k+1)(i+1) mod (N+1)) - 1`.  That works whenever `N+1` is prime, so it reaches sizes the search cannot.
+`--modular` skips the search and builds a single matrix directly, with entry `(k, i)` equal to `((k+1)(i+1) mod (N+1)) - 1`.  It requires `N+1` to be prime, and it reaches sizes the search cannot.
+
+## Installing
 
 `make install` copies the module to `~/.local/lib/python/` and the wrapper to `~/.local/bin/`, and `make uninstall` removes them.  Set `PREFIX` to install somewhere other than `~/.local`.  The installed wrapper finds the module only if that `lib/python/` directory is on `PYTHONPATH`.
 
@@ -38,6 +40,7 @@ To use it from Python, import it from the repo root, or copy the file anywhere o
 from succession_free_derangements import modular_matrix, search_matrices
 
 first = next(search_matrices(8))
+big = modular_matrix(16)
 ```
 
 ## Running the tests
