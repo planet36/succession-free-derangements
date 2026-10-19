@@ -4,17 +4,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A Python project that generates succession-free derangements, organized out of a disorganized, unfinished collection of scripts, notes, ideas, and output.  Everything worth keeping from that material has moved into the module, and the rest was deleted.
+A Python module that generates succession-free derangements and matrices built from them.  It was organized out of a disorganized, unfinished collection of scripts, notes, ideas, and output, and what was worth keeping now lives in the module, `results/`, and `scratch/`.
 
 ## Prose style
 
 `COMMENT-STYLE.md` sets the rules for code comments, docstrings, commit messages, and documentation files, this one included.  Follow it in anything you write here.
 
+`README.md` repeats the commands, install paths, search timings, and file layout for human readers, so a change to any of them belongs in both files.
+
 ## Commands
 
-All the code is in one module, `succession_free_derangements.py`.  It has no runtime dependencies and needs Python 3.10 or later.  It is meant to be run or imported as a plain file, not installed as a package, so don't add packaging metadata.  `make install` only copies the module to `$(PREFIX)/lib/python/` and the wrapper to `$(PREFIX)/bin/`, with `PREFIX` defaulting to `~/.local`.  The tests need pytest, and `pyproject.toml` holds only its settings.
+All the code is in one module, `succession_free_derangements.py`.  It has no runtime dependencies and needs Python 3.10 or later.  It is meant to be run or imported as a plain file, not installed as a package, so don't add packaging metadata.  The tests need pytest, and `pyproject.toml` holds only its settings.
 
-The Makefile also has an `all` target that does nothing and a `clean` target that removes the Python and lint caches.  A parent Makefile that builds many directories runs those targets in each one, so keep them.
+`make install` copies the module to `$(PREFIX)/lib/python/` and the wrapper to `$(PREFIX)/bin/`, with `PREFIX` defaulting to `~/.local`, and `make uninstall` removes them.  The module is copied alone, so nothing in it may refer to another file in the repo.  `make lint` ignores each linter's exit status, so read its output rather than the exit code.  The `all` target does nothing, and `clean` removes the Python and lint caches.  A parent Makefile that builds many directories runs those two in each one, so keep them.
 
 ```sh
 pytest                                         # all tests
@@ -33,14 +35,14 @@ python3 succession_free_derangements.py matrices 16 --modular
 
 The module has a section for each kind, followed by the command-line interface.  The first section handles single permutations.  A succession-free derangement of `0..n-1` has no fixed point and no succession, where a succession is a value followed by the value one greater.  Descending steps such as `3 2` are allowed.
 
-The second section handles the matrices that most of the scratch work was about.  The module docstring holds the definition.  In short, for even `n`, the matrix is symmetric, row 0 is the identity, row `n-1-k` is row `k` reversed, and no ordered pair of adjacent values appears in two rows.  The search and the validator both rely on consequences of that definition, which the docstring spells out.
+The second section handles the matrices.  The module docstring holds the definition.  In short, for even `n`, every row is a permutation of `0..n-1`, row 0 is the identity, row `n-1-k` is row `k` reversed (the mirror rule), the matrix is symmetric, and no ordered pair of adjacent values appears in two rows.
 
-- `search_matrices(n)` backtracks one row at a time over the top half.  Symmetry fixes every entry of the next row except the middle ones.  Because each row's reversal is also a row, the search tracks unordered adjacent pairs, and each pair may appear once.  Every matrix for n = 10 takes under a second, and the first one for n = 12 takes several seconds, but all 482 of them take over half an hour.
+- `search_matrices(n)` backtracks one row at a time over the top half.  Symmetry fixes every entry of the next row except the middle ones.  Because each row's reversal is also a row, the search tracks unordered adjacent pairs, and each pair may appear once.  Every matrix for n = 10 takes under a second, and the first one for n = 12 takes a few seconds, but all 482 of them take over half an hour.
 - `modular_matrix(n)` builds one matrix directly when `n+1` is prime, with entry `(k, i)` equal to `((k+1)(i+1) mod (n+1)) - 1`.  It is one of the saved n = 10 results.
 
 ## Results
 
-`results/succession-free-derangements-{2,4,6,8,10,12}.txt` are the known solutions in numpy's integer-array print format, one matrix per block, separated by blank lines.  `format_matrix` and `parse_matrices` read and write that format, and `matrices N` prints it.  The tests check that the search reproduces every file but the one for 12 exactly, so a change to the format or to the search order will show up there.  Searching for 12 is too slow for the tests, so they only check that its file round-trips through those two functions and holds 482 valid matrices.
+`results/succession-free-derangements-{2,4,6,8,10,12}.txt` are the known solutions in numpy's integer-array print format, one matrix per block, separated by blank lines.  `format_matrix` and `parse_matrices` write and read that format, and `matrices N` prints it.  The tests check that the search reproduces every file but the one for 12 exactly, so a change to the format or to the search order will show up there.  Searching for 12 is too slow for the tests, so they only check that its file round-trips through those two functions and holds 482 valid matrices.
 
 ## scratch/
 
@@ -48,4 +50,4 @@ The second section handles the matrices that most of the scratch work was about.
 
 ## Conventions
 
-Python files start with SPDX headers (`MPL-2.0`, Steven Ward).  `succession_free_derangements.py` carries `__author__`, `__license__`, and a date-string `__version__`.
+Source files, the Makefile included, start with SPDX headers (`MPL-2.0`, Steven Ward), after the shebang where there is one.  The module and the wrapper both carry `__author__`, `__license__`, and a date-string `__version__`.
