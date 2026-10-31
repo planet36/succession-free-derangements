@@ -8,7 +8,7 @@ A Python module that generates succession-free derangements and matrices built f
 
 ## Prose style
 
-`COMMENT-STYLE.md` sets the rules for code comments, docstrings, commit messages, and documentation files, this one included.  Follow it in anything you write here.
+@COMMENT-STYLE.md
 
 `README.md` repeats the commands, install paths, search timings, and file layout for human readers, so a change to any of them belongs in both files.
 
