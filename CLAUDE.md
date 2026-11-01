@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A Python module that generates succession-free derangements and matrices built from them.  It was organized out of a disorganized, unfinished collection of scripts, notes, ideas, and output, and what was worth keeping now lives in the module, `results/`, and `scratch/`.
+This is a Python module that generates succession-free derangements and matrices built from them.  It was organized out of a disorganized, unfinished collection of scripts, notes, ideas, and output, and what was worth keeping now lives in the module, `results/`, and `scratch/`.
 
 ## Prose style
 
@@ -29,7 +29,7 @@ python3 succession_free_derangements.py matrices 12 --limit 1
 python3 succession_free_derangements.py matrices 16 --modular
 ```
 
-`python3 -m succession_free_derangements` works the same as running the file, and so does `./succession-free-derangements`, a wrapper that imports the module and calls `main`.  The wrapper sits at the repo root because Python puts a script's own directory first on the import path, so in a checkout it imports the checkout's module rather than an installed copy.
+`python3 -m succession_free_derangements` works the same as running the file, and so does `./succession-free-derangements`, a wrapper that imports the module and calls `main`.  The wrapper sits at the repo root because Python puts a script's own directory first on the import path, so in a checkout, it imports the checkout's module rather than an installed copy.
 
 ## Two kinds of output
 
@@ -46,7 +46,7 @@ The second section handles the matrices.  The module docstring holds the definit
 
 ## scratch/
 
-`farthest-succession-free-derangements.py` imports the module and prints the succession-free derangements with the largest `circular_distance`.  It checks every one, so n = 12 takes about two and a half minutes, and each step up in n takes about ten times as long.  Neither the module nor the tests refer to `scratch/`.
+`farthest-succession-free-derangements.py` imports the module and prints the succession-free derangements with the largest `circular_distance`.  It checks every one, so n = 12 takes about 2.5 minutes, and each step up in n takes about 10 times as long.  Neither the module nor the tests refer to `scratch/`.
 
 ## Conventions
 
