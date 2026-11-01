@@ -6,7 +6,7 @@
 """Print the succession-free derangements of 0..n-1 with the largest circular distance.
 
 This checks every one of them, so n = 11 takes about 12 seconds and each step up in n takes
-about ten times as long.
+about 10 times as long.
 
 Usage: python3 scratch/farthest-succession-free-derangements.py [N]
 """

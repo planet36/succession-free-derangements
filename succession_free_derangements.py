@@ -9,11 +9,11 @@ shares no contiguous run of two or more values with the identity permutation.
 
 For even ``n``, a succession-free derangement matrix is an ``n`` by ``n`` matrix where:
 
-- every row is a permutation of ``0..n-1``,
-- row 0 is the identity,
-- row ``n-1-k`` is row ``k`` reversed, which this module calls the mirror rule,
-- the matrix is symmetric, and
-- no ordered pair of adjacent values appears in more than one row.
+- every row is a permutation of ``0..n-1``
+- row 0 is the identity
+- row ``n-1-k`` is row ``k`` reversed, which this module calls the mirror rule
+- the matrix is symmetric
+- no ordered pair of adjacent values appears in more than one row
 
 Symmetry makes every column a permutation, so any two rows are derangements of each other.
 Symmetry with the first and last rows also makes row ``k`` start with ``k`` and end with

@@ -67,7 +67,7 @@ def test_validator_rejects_broken_matrices():
     assert not is_succession_free_matrix([row[:5] for row in good[:5]])
 
 
-# Obeys every rule except the mirror rule.  Such matrices first appear at n = 8.
+# This matrix obeys every rule except the mirror rule.  Such matrices first appear at n = 8.
 UNMIRRORED_8 = [
     [0, 1, 2, 3, 4, 5, 6, 7],
     [1, 6, 0, 7, 2, 4, 3, 5],
@@ -79,7 +79,7 @@ UNMIRRORED_8 = [
     [7, 5, 3, 2, 6, 1, 4, 0],
 ]
 
-# Obeys every rule except that rows 1 through 4 repeat a value.
+# This matrix obeys every rule except that rows 1 through 4 repeat a value.
 REPEATED_VALUES_6 = [
     [0, 1, 2, 3, 4, 5],
     [1, 3, 0, 5, 1, 4],
@@ -89,7 +89,7 @@ REPEATED_VALUES_6 = [
     [5, 4, 3, 2, 1, 0],
 ]
 
-# Obeys every rule except that pairs repeat, such as (3, 2) in rows 1 and 3.
+# This matrix obeys every rule except that pairs repeat, such as (3, 2) in rows 1 and 3.
 REPEATED_PAIR_4 = [[0, 1, 2, 3], [1, 0, 3, 2], [2, 3, 0, 1], [3, 2, 1, 0]]
 
 
